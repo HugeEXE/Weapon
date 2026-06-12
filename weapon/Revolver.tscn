@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://85vqhalr5fax"]
+
+[ext_resource type="PackedScene" uid="uid://6ot2ef0o77o0" path="res://weapon.tscn" id="1_8lx1p"]
+[ext_resource type="Script" uid="uid://o0meb7mhi8yg" path="res://Revolver.gd" id="2_l747f"]
+
+[node name="Weapon" unique_id=1829755126 instance=ExtResource("1_8lx1p")]
+script = ExtResource("2_l747f")
+
+[node name="Projectile" parent="." index="0" unique_id=789584729]
+position = Vector2(39, -3)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dikp5sbo054iq"]
+
+[ext_resource type="PackedScene" uid="uid://6ot2ef0o77o0" path="res://weapon.tscn" id="1_hn68x"]
+[ext_resource type="Script" uid="uid://lvque3jckhj2" path="res://shotgun.gd" id="2_7oeqp"]
+[ext_resource type="Texture2D" uid="uid://bmr0cqond5y2t" path="res://[SHOOTING_CHAMBER_OPEN] Shotgun_V1.02.png" id="3_a8mn3"]
+
+[node name="Weapon" unique_id=1829755126 instance=ExtResource("1_hn68x")]
+script = ExtResource("2_7oeqp")
+bullet_count = 9
+power_source = null
+
+[node name="WeaponSprite" parent="." index="1" unique_id=1179978007]
+position = Vector2(-40, 6.0000005)
+texture = ExtResource("3_a8mn3")
+region_enabled = true
+region_rect = Rect2(4, 12, 94, 19)
+
+[node name="Muzzle" parent="." index="2" unique_id=840147510]
+position = Vector2(13, -1)

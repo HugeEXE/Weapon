@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dshw37mk6ivj3"]
+
+[ext_resource type="Texture2D" uid="uid://di3luv5mkjrjm" path="res://Fire Effect and Bullet 16x16.png" id="1_a0de6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naauq"]
+atlas = ExtResource("1_a0de6")
+region = Rect2(417, 17, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av62t"]
+atlas = ExtResource("1_a0de6")
+region = Rect2(433, 17, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxbus"]
+atlas = ExtResource("1_a0de6")
+region = Rect2(401, 17, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqskx"]
+atlas = ExtResource("1_a0de6")
+region = Rect2(385, 17, 16, 15)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naauq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av62t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxbus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqskx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

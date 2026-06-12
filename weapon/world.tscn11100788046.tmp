@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cgda0vfkvvet8"]
+
+[ext_resource type="Script" uid="uid://bt7kuf1f23c0k" path="res://camera_2d.gd" id="2_fj7yv"]
+[ext_resource type="Script" uid="uid://1ygquuljf6ra" path="res://monster.gd" id="3_036b0"]
+[ext_resource type="PackedScene" uid="uid://bg4l5xnwwwf7h" path="res://glock.tscn" id="4_aqk2v"]
+[ext_resource type="Texture2D" uid="uid://b78prenh8aexl" path="res://Dummy-hit-Sheet.png" id="4_dwbse"]
+[ext_resource type="PackedScene" uid="uid://85vqhalr5fax" path="res://Revolver.tscn" id="5_ioo17"]
+[ext_resource type="PackedScene" uid="uid://07o4qu8kpbro" path="res://Rifle.tscn" id="6_wse8f"]
+[ext_resource type="PackedScene" uid="uid://dikp5sbo054iq" path="res://shotgun.tscn" id="7_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://crj1cge0kxn3x" path="res://sniper.tscn" id="8_k3n1d"]
+[ext_resource type="PackedScene" uid="uid://dusqcec7ntaq4" path="res://submachine.tscn" id="9_2o6r5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(156, 81)
+
+[node name="World" type="Node2D" unique_id=1626478288]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=522950608]
+zoom = Vector2(2, 2)
+script = ExtResource("2_fj7yv")
+
+[node name="Monster" type="CharacterBody2D" parent="." unique_id=679596127]
+script = ExtResource("3_036b0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster" unique_id=290502943]
+position = Vector2(159, 2)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Monster" unique_id=807732194]
+position = Vector2(160, 3)
+scale = Vector2(2.96, 4.9375)
+texture = ExtResource("4_dwbse")
+
+[node name="Weapon2" parent="." unique_id=1829755126 instance=ExtResource("4_aqk2v")]
+position = Vector2(-198, -137)
+
+[node name="Weapon" parent="." unique_id=1714631924 instance=ExtResource("5_ioo17")]
+position = Vector2(-200, -82)
+
+[node name="Weapon3" parent="." unique_id=64323288 instance=ExtResource("6_wse8f")]
+position = Vector2(-177, -38)
+
+[node name="Weapon4" parent="." unique_id=2139127284 instance=ExtResource("7_ic0uy")]
+position = Vector2(-165, 16)
+
+[node name="Weapon5" parent="." unique_id=47988146 instance=ExtResource("8_k3n1d")]
+position = Vector2(-144, 65)
+
+[node name="Weapon6" parent="." unique_id=2070045186 instance=ExtResource("9_2o6r5")]
+position = Vector2(-176, 115)
