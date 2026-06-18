@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PowerSource" format=3 uid="uid://cejs7le06f0s4"]
+
+[ext_resource type="Script" uid="uid://cxjxe7rrkarff" path="res://power source/power_source.gd" id="1_5vbg4"]
+
+[resource]
+script = ExtResource("1_5vbg4")
+element = 3
+metadata/_custom_type_script = "uid://cxjxe7rrkarff"
