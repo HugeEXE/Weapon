@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://b3ot40ri6vmmx"]
+
+[ext_resource type="Script" uid="uid://dbfxwgqiauvo3" path="res://bullet_data.gd" id="1_olxjt"]
+[ext_resource type="SpriteFrames" uid="uid://dshw37mk6ivj3" path="res://bullet/split_bullet_frames.tres" id="1_y2pfp"]
+
+[resource]
+script = ExtResource("1_olxjt")
+bullet_animations = ExtResource("1_y2pfp")
+should_split = true
+damage_modifier = 0.7
+metadata/_custom_type_script = "uid://dbfxwgqiauvo3"

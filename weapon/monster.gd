@@ -21,6 +21,19 @@ var tick_timer: float = 0.0
 # Combo Hit Counters
 var uzi_ice_freeze_hits: int = 0
 
+# --- LOOT SYSTEM EXPORTS ---
+@export_group("Loot System")
+@export var loot_scene: PackedScene = preload("res://loot_drop.tscn")
+@export_range(0.0, 1.0) var drop_chance: float = 0.35 # 35% default drop rate
+
+# Item Pools (Populate these with your .tres resource files in the Inspector)
+@export var bullet_pool: Array[BulletData] = []
+@export var power_source_pool: Array[Resource] = [] 
+
+# Base drop textures assigned via Inspector
+@export var bullet_drop_texture: Texture2D
+@export var power_drop_texture: Texture2D
+
 func _ready():
 	speed = base_speed
 	max_health = health # Calibrate base structural ceiling metric
@@ -195,12 +208,58 @@ func die():
 	print(name, "Defeated")
 	
 	# --- ON KILL COMBOS ---
-	# SNIPER + POWERFUL + WATER COMBO: Heal 5% max player hp on successful execution frames
 	var player = get_tree().get_first_node_in_group("Player")
-	
-	# Verify using active profile attributes if your global combo is sniper-vamp state
 	if player and player.has_method("heal") and player.has_attribute("max_hp"):
-		# Ensure your base weapon check satisfies your combo manager requirements
 		pass 
+	
+	# --- LOOT SYSTEM TRIGGER ---
+	if loot_scene and (randf() <= drop_chance):
+		determine_and_spawn_loot()
 		
 	queue_free()
+
+# Processes random drop calculations from item pools
+func determine_and_spawn_loot():
+	print("--- LOOT SYSTEM TRIGGERED FOR: ", name, " ---")
+	
+	var pick_bullet_type = randf() > 0.5
+	var selected_resource: Resource = null
+	var drop_type: LootDrop.DropType
+	var assigned_texture: Texture2D
+	var neon_glow: Color = Color.WHITE
+	
+	print("Rolled for Bullet Profile? ", pick_bullet_type, " | Bullet Pool Size: ", bullet_pool.size(), " | Power Pool Size: ", power_source_pool.size())
+	
+	# 1. Roll for Bullet Profile Card
+	if pick_bullet_type and bullet_pool.size() > 0:
+		drop_type = LootDrop.DropType.BULLET_PROFILE
+		selected_resource = bullet_pool.pick_random()
+		assigned_texture = bullet_drop_texture
+		neon_glow = Color(0.2, 0.9, 0.4)
+		
+	# 2. Roll for Power Source Core
+	elif power_source_pool.size() > 0:
+		drop_type = LootDrop.DropType.POWER_SOURCE
+		selected_resource = power_source_pool.pick_random()
+		assigned_texture = power_drop_texture
+		
+		if "element" in selected_resource:
+			match selected_resource.element:
+				1: neon_glow = Color(2.0, 0.5, 0.2)
+				2: neon_glow = Color(0.5, 0.8, 2.5)
+				3: neon_glow = Color(2.5, 2.5, 0.3)
+				4: neon_glow = Color(0.3, 0.6, 2.5)
+
+	# --- DIAGNOSTIC CHECK ---
+	if selected_resource == null:
+		print("LOOT DROPPING CRITICAL FAILURE: Selected resource is NULL! Check if your inspector pools are empty or if the wrong type was picked.")
+		return
+		
+	print("SUCCESS: Spawning loot item resource path -> ", selected_resource.resource_path)
+	
+	# 3. Instantiate Drop Scene
+	var drop_instance = loot_scene.instantiate() as LootDrop
+	drop_instance.global_position = global_position
+	drop_instance.setup_drop(drop_type, selected_resource, assigned_texture, neon_glow)
+	
+	get_tree().root.call_deferred("add_child", drop_instance)

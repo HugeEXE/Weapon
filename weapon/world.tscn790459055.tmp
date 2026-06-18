@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cgda0vfkvvet8"]
 
-[ext_resource type="PackedScene" uid="uid://c7oxk25esxdva" path="res://monster.tscn" id="2_dwbse"]
 [ext_resource type="Script" uid="uid://bt7kuf1f23c0k" path="res://camera_2d.gd" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://1ygquuljf6ra" path="res://monster.gd" id="3_036b0"]
 [ext_resource type="PackedScene" uid="uid://dikp5sbo054iq" path="res://guns/shotgun.tscn" id="4_036b0"]
@@ -16,7 +15,18 @@ size = Vector2(156, 81)
 zoom = Vector2(2, 2)
 script = ExtResource("2_fj7yv")
 
-[node name="Monster" parent="." unique_id=566736638 instance=ExtResource("2_dwbse")]
+[node name="Monster" type="CharacterBody2D" parent="." unique_id=679596127]
+script = ExtResource("3_036b0")
+health = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster" unique_id=290502943]
+position = Vector2(145, -70)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Monster" unique_id=807732194]
+position = Vector2(142, -72)
+scale = Vector2(2.96, 4.9375)
+texture = ExtResource("4_dwbse")
 
 [node name="Monster2" type="CharacterBody2D" parent="." unique_id=705638977]
 script = ExtResource("3_036b0")
