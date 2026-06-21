@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://07o4qu8kpbro"]
+
+[ext_resource type="PackedScene" uid="uid://6ot2ef0o77o0" path="res://guns/weapon.tscn" id="1_36w3d"]
+[ext_resource type="Script" uid="uid://cfwiobv5lp2qv" path="res://guns/Rifle.gd" id="2_orkfg"]
+[ext_resource type="Texture2D" uid="uid://cj1e2npdqab0i" path="res://Sprite/AK 47 [96x48].png" id="3_q4vfd"]
+
+[node name="Weapon" unique_id=1829755126 instance=ExtResource("1_36w3d")]
+script = ExtResource("2_orkfg")
+power_source = null
+
+[node name="WeaponSprite" parent="." index="1" unique_id=1179978007]
+position = Vector2(-14, 19)
+texture = ExtResource("3_q4vfd")
+
+[node name="Muzzle" parent="." index="2" unique_id=840147510]
+position = Vector2(21, 0)

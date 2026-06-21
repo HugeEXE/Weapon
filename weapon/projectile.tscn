@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b5tiegt74dhyr"]
+
+[ext_resource type="Script" uid="uid://b2bscwjfjchka" path="res://projectile.gd" id="1_a85iw"]
+[ext_resource type="Texture2D" uid="uid://di3luv5mkjrjm" path="res://Sprite/Fire Effect and Bullet 16x16.png" id="2_qxf0c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgwo2"]
+atlas = ExtResource("2_qxf0c")
+region = Rect2(160, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxmqc"]
+atlas = ExtResource("2_qxf0c")
+region = Rect2(176, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xblw"]
+atlas = ExtResource("2_qxf0c")
+region = Rect2(192, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dac07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgwo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxmqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xblw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dgwo2"]
+radius = 2.0
+
+[node name="Projectile" type="Area2D" unique_id=987061517]
+script = ExtResource("1_a85iw")
+
+[node name="BulletRender" type="AnimatedSprite2D" parent="." unique_id=1022557653]
+position = Vector2(0, 1.1920929e-07)
+scale = Vector2(0.3125, 0.31250003)
+sprite_frames = SubResource("SpriteFrames_dac07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1148922256]
+shape = SubResource("CircleShape2D_dgwo2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

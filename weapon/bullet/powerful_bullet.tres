@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://dxg2fr6vsj325"]
+
+[ext_resource type="SpriteFrames" uid="uid://cehwmyb7ipn5q" path="res://bullet/powerful_bullet_frames.tres" id="1_gr24i"]
+[ext_resource type="Script" uid="uid://dbfxwgqiauvo3" path="res://bullet_data.gd" id="1_mu5ec"]
+
+[resource]
+script = ExtResource("1_mu5ec")
+type_name = "Powerful"
+bullet_animations = ExtResource("1_gr24i")
+damage_modifier = 2.0
+bullet_color = Color(0.16862746, 0, 0, 1)
+metadata/_custom_type_script = "uid://dbfxwgqiauvo3"

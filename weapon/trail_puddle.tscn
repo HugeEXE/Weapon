@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://x2d3sbhujbxo"]
+
+[ext_resource type="Script" uid="uid://c1cw7iedw8sdr" path="res://trail_puddle.gd" id="1_w4t5a"]
+[ext_resource type="Texture2D" uid="uid://di3luv5mkjrjm" path="res://Sprite/Fire Effect and Bullet 16x16.png" id="2_dnsmv"]
+[ext_resource type="Texture2D" uid="uid://ccpuowpe8xqan" path="res://Sprite/Water Effect and Bullet 16x16.png" id="3_3wf44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnsmv"]
+atlas = ExtResource("2_dnsmv")
+region = Rect2(272, 146, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wf44"]
+atlas = ExtResource("2_dnsmv")
+region = Rect2(256, 146, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjh07"]
+atlas = ExtResource("2_dnsmv")
+region = Rect2(240, 146, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6ow5"]
+atlas = ExtResource("3_3wf44")
+region = Rect2(480, 148, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgmgf"]
+atlas = ExtResource("3_3wf44")
+region = Rect2(496, 148, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uma4p"]
+atlas = ExtResource("3_3wf44")
+region = Rect2(512, 148, 16, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjiun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnsmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wf44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjh07")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6ow5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgmgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uma4p")
+}],
+"loop": true,
+"name": &"ice",
+"speed": 20.0
+}]
+
+[node name="TrailPuddle" type="Area2D" unique_id=1354066354]
+z_index = -1
+script = ExtResource("1_w4t5a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1948821739]
+sprite_frames = SubResource("SpriteFrames_yjiun")
+animation = &"fire"

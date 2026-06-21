@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dcl61njsx4fnc"]
+
+[ext_resource type="Script" uid="uid://cugun4wup8qfn" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://b78prenh8aexl" path="res://Sprite/Dummy-hit-Sheet.png" id="2_i3pqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(55, 81.5)
+
+[node name="Player" type="CharacterBody2D" unique_id=486347961]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2098987256]
+scale = Vector2(4.9545455, 5.125)
+texture = ExtResource("2_i3pqv")
+region_enabled = true
+region_rect = Rect2(40, 0, 10, 16)
+
+[node name="WeaponSlot" type="Marker2D" parent="." unique_id=1445388124 groups=["WeaponContainer"]]
+position = Vector2(17, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=436395277]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_hqtel")
